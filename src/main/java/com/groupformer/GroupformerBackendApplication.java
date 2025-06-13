@@ -1,4 +1,4 @@
-package com.groupformer.groupformerbackend;
+package com.groupformer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
