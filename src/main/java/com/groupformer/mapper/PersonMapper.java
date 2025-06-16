@@ -12,12 +12,32 @@ public class PersonMapper {
         Person person = new Person();
         person.setId(dto.getId());
         person.setName(dto.getName());
-        person.setGender(Person.Gender.valueOf(dto.getGender().toUpperCase()));
+
+        if (dto.getGender() != null) {
+            try {
+                person.setGender(Person.Gender.valueOf(dto.getGender().toUpperCase()));
+            } catch (IllegalArgumentException e) {
+                person.setGender(Person.Gender.NOT_SPECIFIED);
+            }
+        } else {
+            person.setGender(Person.Gender.NOT_SPECIFIED);
+        }
+
         person.setAge(dto.getAge());
         person.setFrenchLevel(dto.getFrenchLevel());
         person.setTechnicalLevel(dto.getTechnicalLevel());
         person.setFormerDwwm(dto.getFormerDwwm());
-        person.setPersonalityProfile(Person.PersonalityProfile.valueOf(dto.getPersonalityProfile().toUpperCase()));
+
+        if (dto.getPersonalityProfile() != null) {
+            try {
+                person.setPersonalityProfile(Person.PersonalityProfile.valueOf(dto.getPersonalityProfile().toUpperCase()));
+            } catch (IllegalArgumentException e) {
+                person.setPersonalityProfile(Person.PersonalityProfile.RESERVED);
+            }
+        } else {
+            person.setPersonalityProfile(Person.PersonalityProfile.RESERVED);
+        }
+
         return person;
     }
 

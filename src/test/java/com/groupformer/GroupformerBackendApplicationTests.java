@@ -1,4 +1,4 @@
-package com.groupformer.groupformerbackend;
+package com.groupformer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
