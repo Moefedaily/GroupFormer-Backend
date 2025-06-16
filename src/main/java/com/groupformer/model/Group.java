@@ -26,7 +26,6 @@ public class Group {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    // Relations
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_draw_id", nullable = false)
     private GroupDraw groupDraw;
