@@ -51,7 +51,6 @@ public class Person {
     @Column(name = "personality_profile", nullable = false, length = 20)
     private PersonalityProfile personalityProfile;
 
-    // Relations
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_list_id", nullable = false)
     private StudentList studentList;

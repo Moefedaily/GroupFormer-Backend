@@ -24,13 +24,16 @@ public class PersonDto {
     public PersonDto(Person person) {
         this.id = person.getId();
         this.name = person.getName();
-        this.gender = person.getGender().getValue();
+        this.gender = person.getGender() != null ? person.getGender().getValue() : "ne se prononce pas";
         this.age = person.getAge();
         this.frenchLevel = person.getFrenchLevel();
         this.technicalLevel = person.getTechnicalLevel();
         this.formerDwwm = person.getFormerDwwm();
-        this.personalityProfile = person.getPersonalityProfile().getValue();
-        this.studentListId = person.getStudentList().getId();
-        this.studentListName = person.getStudentList().getName();
+        this.personalityProfile = person.getPersonalityProfile() != null ?
+                person.getPersonalityProfile().getValue() : "réservé";
+        if (person.getStudentList() != null) {
+            this.studentListId = person.getStudentList().getId();
+            this.studentListName = person.getStudentList().getName();
+        }
     }
 }
