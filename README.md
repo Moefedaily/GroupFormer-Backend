@@ -76,11 +76,48 @@ GET    /api/persons/studentlist/{listId}      # Get people in list
 PUT    /api/persons/{id}                      # Update person
 DELETE /api/persons/{id}                      # Delete person
 ```
+### Group Draws
+```http
+POST   /api/groupdraws/studentlist/{studentListId}    # Create group draw
+GET    /api/groupdraws/{id}                           # Get draw by ID
+GET    /api/groupdraws                                # Get all draws
+GET    /api/groupdraws/studentlist/{studentListId}    # Get draws for list
+DELETE /api/groupdraws/{id}                           # Delete draw
+```
+### Groups
+```http
+POST   /api/groups/groupdraw/{groupDrawId}            # Create group
+GET    /api/groups/{id}                               # Get group by ID
+GET    /api/groups                                    # Get all groups
+GET    /api/groups/groupdraw/{groupDrawId}            # Get groups by draw
+PUT    /api/groups/{id}                               # Update group
+DELETE /api/groups/{id}                               # Delete group
+POST   /api/groups/{groupId}/persons/{personId}       # Add person to group
+DELETE /api/groups/{groupId}/persons/{personId}       # Remove person from group
+```
 
 ### Group Generation
 ```http
 POST   /api/generate-groups          # Generate balanced groups
 ```
+### Request Example(Group Generation):
+
+```json
+{
+    "studentListId": 1,
+    "numberOfGroups": 3,
+    "groupNames": ["CDA24", "CDA25J", "CDA25P"],
+    "mixGender": true,
+    "mixAge": false,
+    "mixFrenchLevel": true,
+    "mixTechnicalLevel": true,
+    "mixFormerDwwm": false,
+    "mixPersonalityProfile": true
+}
+```
+
+
+
 
 ## **Development Setup**
 
