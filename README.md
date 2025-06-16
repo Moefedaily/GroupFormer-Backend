@@ -53,10 +53,10 @@ The core idea is simple: take everyone out, organize by one factor, then redistr
 
 We tested it with real scenarios and it handles various situations well - from simple 2-group splits to complex multi-criteria balancing with uneven numbers.
 
-## 🎯 **Final Result**
+## **Final Result**
 
 We ended up with a working system that creates balanced groups reliably. The approach is straightforward to understand and modify, which makes maintenance much easier.
 
 ---
 
-*A practical solution for a common classroom challenge* 📚
+Built with Spring Boot, curiosity, and lots of coffee ☕☕☕☕☕☕☕☕☕☕☕☕
