@@ -12,7 +12,6 @@ Here's how we organized our data to make everything work together:
 
 ![Database Schema](/Screenshots/Group-generator.png)
 
-
 The database is straight-forward - users have lists, lists contain people, and when we generate groups, we save everything so we can learn from it next time.
 
 ## **Backend Structure**
@@ -28,6 +27,84 @@ src/main/java/com/groupformer/
 ├── repository/     # Database access layer
 ├── service/        # Business logic interfaces
 └── serviceImpl/    # Actual business logic
+```
+
+## **Testing Architecture**
+
+```
+src/test/java/com/groupformer/
+└── controller/     # Integration tests for REST endpoints
+    ├── UserControllerTest.java
+    ├── StudentListControllerTest.java
+    ├── PersonControllerTest.java
+    ├── GroupControllerTest.java
+    ├── GroupDrawControllerTest.java
+    └── GroupGenerationControllerTest.java
+```
+
+### Key Testing Insights
+
+1. **Mock Services, Not Repositories**: Each controller test mocks its service layer
+2. **Validation Testing**: Test only success scenarios
+
+## **API Endpoints**
+
+### User Management
+```http
+POST   /api/users                    # Create user
+GET    /api/users/{id}               # Get user by ID
+GET    /api/users/email/{email}      # Get user by email
+PUT    /api/users/{id}               # Update user
+DELETE /api/users/{id}               # Delete user
+PUT    /api/users/{id}/accept-cgu    # Accept terms
+```
+
+### Student Lists
+```http
+POST   /api/studentlists/user/{userId}        # Create list for user
+GET    /api/studentlists/{id}                 # Get list by ID
+GET    /api/studentlists/user/{userId}        # Get user's lists
+PUT    /api/studentlists/{id}                 # Update list
+DELETE /api/studentlists/{id}                 # Delete list
+```
+
+### People Management
+```http
+POST   /api/persons/studentlist/{listId}      # Add person to list
+GET    /api/persons/{id}                      # Get person by ID
+GET    /api/persons/studentlist/{listId}      # Get people in list
+PUT    /api/persons/{id}                      # Update person
+DELETE /api/persons/{id}                      # Delete person
+```
+
+### Group Generation
+```http
+POST   /api/generate-groups          # Generate balanced groups
+```
+
+## **Development Setup**
+
+### Prerequisites
+- Java 21+
+- Maven 3.8+
+- PostgreSQL 13+
+
+### Running the Application
+```bash
+# Clone the repository
+git clone <repository-url>
+cd groupformer-backend
+
+# Configure database in application.properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/groupformer
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+
+# Run tests
+mvn test
+
+# Start the application
+mvn spring-boot:run
 ```
 
 ## **The Algorithm Challenge**
@@ -53,10 +130,10 @@ The core idea is simple: take everyone out, organize by one factor, then redistr
 
 We tested it with real scenarios and it handles various situations well - from simple 2-group splits to complex multi-criteria balancing with uneven numbers.
 
-## 🎯 **Final Result**
+## **Final Result**
 
 We ended up with a working system that creates balanced groups reliably. The approach is straightforward to understand and modify, which makes maintenance much easier.
 
 ---
 
-*A practical solution for a common classroom challenge* 📚
+Built with Spring Boot, curiosity, and lots of coffee ☕☕☕☕☕☕☕☕☕☕☕☕
