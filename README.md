@@ -50,7 +50,7 @@ We implemented a complete JWT authentication system with three user roles:
 ```http
 POST   /api/auth/login       # Login with email/password
 POST   /api/auth/register    # Register new trainer account
-POST   /api/auth/logout      # Logout (optional for JWT)
+POST   /api/auth/logout      # Logout
 ```
 
 ## **Testing Architecture**
