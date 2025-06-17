@@ -76,4 +76,15 @@ public class UserServiceImpl implements UserService {
         }
         throw new RuntimeException("User not found with id: " + userId);
     }
+
+    @Override
+    public User markEmailAsVerified(Long userId) {
+        Optional<User> existingUser = userRepository.findById(userId);
+        if (existingUser.isPresent()) {
+            User userToUpdate = existingUser.get();
+            userToUpdate.setEmailVerified(true);
+            return userRepository.save(userToUpdate);
+        }
+        throw new RuntimeException("User not found with id: " + userId);
+    }
 }

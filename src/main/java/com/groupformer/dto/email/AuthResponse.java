@@ -1,4 +1,4 @@
-package com.groupformer.dto.Auth;
+package com.groupformer.dto.email;
 
 import lombok.Data;
 
@@ -10,6 +10,8 @@ public class AuthResponse {
     private String name;
     private String email;
     private String role;
+    private Boolean emailVerified;
+    private String message;
 
     public AuthResponse(String token, Long id, String name, String email, String role) {
         this.token = token;
