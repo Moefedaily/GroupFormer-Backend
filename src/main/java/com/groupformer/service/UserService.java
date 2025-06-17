@@ -15,4 +15,5 @@ public interface UserService {
     boolean deleteUser(Long id);
     boolean emailExists(String email);
     User acceptCgu(Long userId);
+    User markEmailAsVerified(Long userId);
 }
